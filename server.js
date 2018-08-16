@@ -1,9 +1,23 @@
-console.log("hola");
+
 var express = require("express");
 var app = express();
-app.get("/", function (req,res) {res.send("hola mundo");});
-app.get("/hola", function (req,res) {res.send("holajhgjhg");});
-app.listen(3000, function () {console.log("funcione");});
+var path = require("path");
 
 
+app.get("/", function (req,res){
+    res.sendfile(
+        path.join(
+            __dirname + '/src/views/index.html'
+        )
+    );
+});
+app.get("/preguntas", function (req,res){
+    res.sendfile(
+        path.join(
+            __dirname + '/src/views/preguntas.html'
+        )
+    );
+});
 
+
+app.listen(3000);
